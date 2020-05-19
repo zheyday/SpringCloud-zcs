@@ -1,0 +1,19 @@
+version: '3'
+services:
+  eureka-server-single:
+    image: eureka-server-single
+    ports:
+      - "8761:8761"
+    container_name: "eureka-server-single"
+  config-server:
+    image: config-server
+    ports:
+      - "8610:8610"
+    container_name: "config-server"
+  oauth-server:
+    image: oauth-server
+    ports:
+      - "9120:9120"
+    container_name: "oauth-server"
+    cap_add:
+      - SYS_PTRACE

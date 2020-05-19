@@ -1,0 +1,37 @@
+server:
+  port: 8900
+#  servlet:
+#    context-path: /user-center
+eureka:
+  client:
+    service-url:
+      defaultZone: http://106.14.45.78:8761/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: user-center
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    username: root
+    password: 123456
+
+oauth-server: http://106.14.45.78:9120/oauth-server
+
+security:
+  oauth2:
+    resource:
+      id: ${spring.application.name}
+      #      资源服务器三种验证令牌方法
+      #       一、在ResourceServerConfig中本地配置
+      #      二、从认证服务器获取用户信息 解析出token
+      #      user-info-uri: ${oauth-server}/oauth2_token/current
+      #      prefer-token-info: false
+      #       三、远程获取公钥 解析token
+      jwt:
+        key-uri: ${oauth-server}/oauth/token_key
+swagger:
+  base-package: zcs.user_center.controller
+  title: user接口文档
+

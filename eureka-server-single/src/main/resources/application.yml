@@ -1,0 +1,25 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: eureka-server-single
+  client:
+    register-with-eureka: false #表示是否将自己注册到 Eureka Server，默认为 true
+    fetch-registry: false       #表示是否从 Eureka Server 获取注册信息，默认为 true
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+#    关闭保护机制
+    enable-self-preservation: false
+#    剔除失效服务间隔 默认90s
+    eviction-interval-timer-in-ms: 10000
+spring:
+  application:
+    name: eureka-server-single
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+#    username: root
+#    password: 123456
+

@@ -1,0 +1,43 @@
+server:
+  port: 8751
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+spring:
+  application:
+    name: eureka-client1
+  profiles:
+    active: dev
+  devtools:
+    restart:
+      enabled: true
+      trigger-file: devtools.tg
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://106.14.45.78/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    username: root
+    password: 123456
+
+swagger:
+  base-package: zcs.eurekaclient1.controller
+  title: eureka-client1接口文档
+#mybatis-plus:
+#  mapper-locations: classpath*:mapper/*.xml
+oauth-server: http://106.14.45.78:9120/oauth-server
+security:
+  oauth2:
+    resource:
+      id: eureka-client1
+#      资源服务器三种验证令牌方法
+#       一、在ResourceServerConfig中本地配置
+#      二、从认证服务器获取用户信息 解析出token
+#      user-info-uri: ${oauth-server}/oauth2_token/current
+#      prefer-token-info: false
+#       三、远程获取公钥 解析token
+      jwt:
+        key-uri: ${oauth-server}/oauth/token_key
+

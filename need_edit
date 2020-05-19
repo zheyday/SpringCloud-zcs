@@ -1,0 +1,20 @@
+docker stop $(docker ps -a | grep "Exited" | awk '{print $1 }') //停止容器
+docker rm $(docker ps -a | grep "Exited" | awk '{print $1 }') //删除容器
+docker rmi $(docker images | grep "none" | awk '{print $3}') //删除镜像
+
+新建服务需要修改的地方：
+    application.yml:
+        server.port
+        spring.application.name
+        swagger
+    pom.xml:
+       <artifactId>
+       <name>
+
+复制服务需要修改的地方：
+    先在Modules把路径删掉 然后再添加
+    主类名和类上的扫描包
+    包名
+    application.yml:
+        server.port
+

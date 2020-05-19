@@ -1,0 +1,22 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+#  不能在配置文件配置 因为要获得config-server的地址
+  client:
+    service-url:
+      #服务注册中心
+      defaultZone: http://106.14.45.78:8761/eureka/
+spring:
+  application:
+    name: seckill
+  cloud:
+    config:
+      name: ${spring.application.name},commons
+      label: master
+      profile: pro
+      discovery:
+        #开启通过服务从配置中心读取文件
+        enabled: true
+        service-id: config-server
+      fail-fast: true
+#      uri: http://106.14.45.78:8610/

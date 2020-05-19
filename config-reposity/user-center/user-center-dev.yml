@@ -1,0 +1,26 @@
+server:
+  port: 8752
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  application:
+    name: user-center
+  profiles:
+    active: dev
+  devtools:
+    restart:
+      enabled: true
+      trigger-file: devtools.tg
+swagger:
+  base-package: zcs.user_center.controller
+  title: 用户中心接口文档

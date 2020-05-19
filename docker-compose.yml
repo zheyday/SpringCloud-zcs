@@ -1,0 +1,16 @@
+version: '3'
+services:
+  zuul:
+    image: zuul
+    ports:
+      - "9110:9110"
+    container_name: "zuul"
+    cap_add:
+      - SYS_PTRACE
+  seckill:
+    image: seckill
+    ports:
+    - "8650:8650"
+    container_name: "seckill"
+    cap_add:
+      - SYS_PTRACE

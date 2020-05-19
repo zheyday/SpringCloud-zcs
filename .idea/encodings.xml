@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/commons/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-client-template/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/consumer-feign/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-client/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-client1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-client1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-server-single/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oauth-client1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oauth-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oauth-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/orders/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rabbitmq-hello/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill_01/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-center/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-center/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zuul/src/main/java" charset="UTF-8" />
+  </component>
+</project>

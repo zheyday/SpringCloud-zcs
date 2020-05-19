@@ -1,0 +1,44 @@
+server:
+  port: 8610
+spring:
+#  profiles:
+#    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zheyday/CloudOneConfig
+#          username: zheyday
+#          password:
+          search-paths: /*
+#        native:
+#          search-locations: E:/JAVA/cloudOne/config-reposity/**
+  #    bus:
+#      enabled: true
+#      trace:
+#        enabled: true
+  rabbitmq:
+    host: 106.14.45.78
+    port: 5672
+    username: guest
+    password: guest
+
+#注册到eureka-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://106.14.45.78:8761/eureka/
+  instance:
+    prefer-ip-address: true
+#    发送心跳时间间隔 默认30
+    lease-renewal-interval-in-seconds: 5
+#    服务端收到最后一次心跳之后等待的时间上限 超过则剔除（客户端告诉服务端按照此规则）
+    lease-expiration-duration-in-seconds: 12
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="oauth-server" />
+        <module name="config-client" />
+        <module name="consumer_feign" />
+        <module name="oauth-test" />
+        <module name="websocket" />
+        <module name="eureka-client" />
+        <module name="seckill" />
+        <module name="orders" />
+        <module name="zuul" />
+        <module name="demo1" />
+        <module name="user-center" />
+        <module name="eureka-server-single" />
+        <module name="commons" />
+        <module name="rabbitmq-hello" />
+        <module name="eureka-client1" />
+        <module name="oauth-client1" />
+        <module name="config-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloudOne" target="1.8" />
+      <module name="commons" target="1.8" />
+      <module name="config-client" target="1.8" />
+      <module name="config-server" target="1.8" />
+      <module name="consumer_feign" target="1.8" />
+      <module name="demo" target="1.8" />
+      <module name="demo1" target="1.8" />
+      <module name="eureka-client" target="1.8" />
+      <module name="eureka-client1" target="1.8" />
+      <module name="eureka-server-single" target="1.8" />
+      <module name="oauth-client1" target="1.8" />
+      <module name="oauth-server" target="1.8" />
+      <module name="oauth-test" target="1.8" />
+      <module name="oauth2" target="1.8" />
+      <module name="orders" target="1.8" />
+      <module name="rabbitmq-hello" target="1.8" />
+      <module name="seckill" target="1.8" />
+      <module name="seckill_01" target="1.8" />
+      <module name="security" target="1.8" />
+      <module name="user-center" target="1.8" />
+      <module name="websocket" target="1.8" />
+      <module name="zuul" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cloudOne" options="-parameters" />
+      <module name="commons" options="-parameters" />
+      <module name="config-client" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="consumer_feign" options="-parameters" />
+      <module name="demo" options="-parameters" />
+      <module name="demo1" options="-parameters" />
+      <module name="eureka-client" options="-parameters" />
+      <module name="eureka-client1" options="-parameters" />
+      <module name="eureka-server-single" options="-parameters" />
+      <module name="oauth-client1" options="-parameters" />
+      <module name="oauth-server" options="-parameters" />
+      <module name="oauth2" options="-parameters" />
+      <module name="orders" options="-parameters" />
+      <module name="rabbitmq-hello" options="-parameters" />
+      <module name="seckill" options="-parameters" />
+      <module name="seckill_01" options="-parameters" />
+      <module name="security" options="-parameters" />
+      <module name="user-center" options="-parameters" />
+      <module name="websocket" options="-parameters" />
+      <module name="zuul" options="-parameters" />
+    </option>
+  </component>
+</project>

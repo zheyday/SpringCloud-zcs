@@ -1,0 +1,13 @@
+server:
+  port: 8620
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  application:
+    name: config-client
+
+env: '{cipher}AQA4ka7e6nZHdtyv4v0T55vH24FWLekJXPv1tGZvs65g0q9K3Mh+3mAN5TQ6sHvONuVnojcwQ+z4mZ04n9m3YgdcsqZpqsn9CxlDWxYn1dYUsZGvhWiR30S/4bUwpylreMygNzyl070tdid/zLKjDGwSkmbGb1HkSCvcyTi+5CJCSBJ66BzsB7WNv6/u/xMZgiYGwrfod5z9OSCzYTxIet4gyXDpEWs1hBk44va8Hczqjo+oRNLNeyR2JNH+OyzL1tg0sckd22CQb3bNK4R1SxwELw0V69jYN/xgc/AkG6PwkdjDKGwEb+6wWMHuKMq1G/WkyeEW1VK7cjAuPQmkcJcaPyG/ipyw06pnUSlW3SN9jpN4kRtNWRKuavbcwSIKDXg='
+

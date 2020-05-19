@@ -1,0 +1,31 @@
+server:
+  port: 9110
+
+spring:
+  application:
+    name: api-gateway
+  security:
+    user:
+      name: admin
+      password: amdin
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+
+#路由配置
+# /eureka-client/**路径都会被转发到eureka-client服务中
+zuul:
+  routes:
+    eureka-client: /eureka-client/**
+    user-center: /user-center/**
+    #  忽略路由
+#  ignored-patterns:  /**/v2/api-docs
+swagger:
+  title: SpringCloud项目开发文档
+  description: 秒杀/12306
+  version: 1.0
+#  terms-of-service-url: ''

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <title>login</title>
+</head>
+<style>
+    .bigdiv {
+        position: relative;
+        margin: 0 auto;
+        width: 600px;
+        /*height: 500px;*/
+        padding: 100px;
+        margin-bottom: 22px
+    }
+
+    .smalldiv {
+        margin-bottom: 22px
+    }
+    html,body{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<body>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<div style="height: 100%;width: 100%;background-color: #2d3a4b">
+    <form method="post" action="/login">
+        <div class="bigdiv">
+            <h3 style="text-align: center;color: white;margin-bottom: 30px">登 陆</h3>
+            <div class="input-group input-group-lg" style="margin-bottom: 22px">
+                <span class="input-group-addon" id="sizing-addon1">用户名</span>
+                <input type="text" class="form-control" name="username" placeholder="请输入用户名"
+                       aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg" style="margin-bottom: 22px">
+                <span class="input-group-addon" id="sizing-addon2">密&nbsp;&nbsp;&nbsp;码</span>
+                <input type="text" class="form-control" name="password" placeholder="请输入密码"
+                       aria-describedby="sizing-addon1">
+            </div>
+            <div class="smalldiv">
+                <button type="submit" class="btn btn-primary" style="width: 100%;background-color: #409EFF">登陆</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

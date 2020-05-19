@@ -1,0 +1,16 @@
+server:
+  port: 9121
+  #  url根地址 不配置的话会报invalid_token错误
+  #  或者在zuul中配置也可以
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://106.14.45.78:8761/eureka/
+spring:
+  application:
+    name: oauth-server
+  main:
+    #    允许自己的实例覆盖系统默认的实例
+    allow-bean-definition-overriding: true
