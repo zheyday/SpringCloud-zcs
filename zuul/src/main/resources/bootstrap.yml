@@ -9,14 +9,14 @@ eureka:
 spring:
   application:
     name: zuul
-  cloud:
-    config:
-      name: ${spring.application.name},commons
-      label: master
-      profile: pro
-      discovery:
-        #开启通过服务从配置中心读取文件
-        enabled: true
-        service-id: config-server
-      fail-fast: true
+#  cloud:
+#    config:
+#      name: ${spring.application.name},commons
+#      label: master
+#      profile: pro
+#      discovery:
+#        #开启通过服务从配置中心读取文件
+#        enabled: true
+#        service-id: config-server
+#      fail-fast: true
 #      uri: http://106.14.45.78:8610/

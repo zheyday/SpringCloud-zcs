@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="oauth-server" />
         <module name="config-client" />
+        <module name="eureka-client1" />
         <module name="consumer_feign" />
         <module name="oauth-test" />
         <module name="websocket" />
@@ -20,8 +21,6 @@
         <module name="eureka-server-single" />
         <module name="commons" />
         <module name="rabbitmq-hello" />
-        <module name="eureka-client1" />
-        <module name="oauth-client1" />
         <module name="config-server" />
       </profile>
     </annotationProcessing>

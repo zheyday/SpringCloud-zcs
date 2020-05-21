@@ -1,5 +1,40 @@
 version: '3'
 services:
+  eureka-server-single:
+    image: eureka-server-single
+    ports:
+      - "8761:8761"
+    container_name: "eureka-server-single"
+    environment:
+      - JVM_OPTS=-Xms100m -Xmx100m
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+  config-server:
+    image: config-server
+    ports:
+      - "8610:8610"
+    container_name: "config-server"
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+  oauth-server:
+    image: oauth-server
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+    ports:
+      - "9120:9120"
+    container_name: "oauth-server"
+    environment:
+      - JVM_OPTS=-Xms100m -Xmx100m
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+    cap_add:
+      - SYS_PTRACE
   zuul:
     image: zuul
     ports:

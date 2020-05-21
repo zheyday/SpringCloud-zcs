@@ -9,7 +9,6 @@
         <option value="$PROJECT_DIR$/websocket/pom.xml" />
         <option value="$PROJECT_DIR$/consumer-feign/pom.xml" />
         <option value="$PROJECT_DIR$/rabbitmq-hello/pom.xml" />
-        <option value="$PROJECT_DIR$/oauth-client1/pom.xml" />
         <option value="$PROJECT_DIR$/seckill/pom.xml" />
         <option value="$PROJECT_DIR$/config-server/pom.xml" />
         <option value="$PROJECT_DIR$/zuul/pom.xml" />

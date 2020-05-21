@@ -16,33 +16,18 @@
 
     <properties>
         <java.version>1.8</java.version>
-<!--        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>-->
+        <!--        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>-->
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>zcs</groupId>
             <artifactId>commons</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <groupId>mysql</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-                    <groupId>org.springframework.cloud</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
         <dependency>

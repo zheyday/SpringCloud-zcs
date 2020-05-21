@@ -1,0 +1,94 @@
+server:
+  port: 9110
+
+master-ip: 172.17.0.1
+oauth-server: http://${master-ip}:9120
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${master-ip}:3306/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    username: root
+    data-password: 123456
+  redis:
+    host: ${master-ip}
+    port: 6379
+    password: 123456
+    timeout: 20000
+    database: 0
+#  rabbitmq:
+#    host: ${master-ip}
+#    port: 5672
+#    username: guest
+#    password: guest
+eureka:
+  instance:
+    #    发送心跳时间间隔 默认30
+    lease-renewal-interval-in-seconds: 10
+    #    服务端收到最后一次心跳之后等待的时间上限 超过则剔除（客户端告诉服务端按照此规则）
+    lease-expiration-duration-in-seconds: 22
+
+security:
+  oauth2:
+    #   和认证服务器中的client设置对应
+    client:
+      client-id: zuul
+      client-secret: zuul
+      #	   获取令牌地址
+      access-token-uri: ${oauth-server}/oauth/token
+      #      认证地址
+      user-authorization-uri: ${oauth-server}/oauth/authorize
+    #      use-current-uri: false
+    resource:
+      id: zuul
+      #      资源服务器三种验证令牌方法
+      #       一、在ResourceServerConfig中本地配置
+      #      二、从认证服务器获取用户信息 解析出token
+      user-info-uri: ${oauth-server}/current
+      prefer-token-info: false
+      #       三、远程获取公钥 解析token
+      jwt:
+        key-uri: ${oauth-server}/oauth/token_key
+
+swagger:
+  title: SpringCloud项目开发文档
+  description: 秒杀/12306
+  version: 1.0
+#  terms-of-service-url: ''
+#路由配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 12000
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeOut: 5000
+zuul:
+  semaphore:
+    max-semaphores: 10000
+  routes:
+    eureka-client:
+      path: /eureka-client/**
+      sensitiveHeaders:
+      serviceId: eureka-client
+    eureka-client1:
+      path: /eureka-client1/**
+      sensitiveHeaders:
+      serviceId: eureka-client1
+    oauth-server:
+      #      path: /oauth-server/**
+      sensitiveHeaders:
+      serviceId: oauth-server
+    seckill:
+      path: /seckill/**
+      sensitiveHeaders:
+      serviceId: seckill
+    user-center:
+      path: /user-center/**
+      sensitiveHeaders:
+      serviceId: user-center
+
+    #  忽略路由
+#  ignored-patterns:  /**/v2/api-docs

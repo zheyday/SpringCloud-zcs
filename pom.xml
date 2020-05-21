@@ -17,12 +17,12 @@
 
     <modules>
         <module>commons</module>
-<!--        <module>oauth-server</module>-->
-<!--        <module>config-client-template</module>-->
-<!--        <module>eureka-client</module>-->
-<!--        <module>eureka-client1</module>-->
-        <module>seckill</module>
-<!--        <module>zuul</module>-->
+        <module>oauth-server</module>
+        <!--        <module>config-client-template</module>-->
+        <!--        <module>eureka-client</module>-->
+        <!--        <module>eureka-client1</module>-->
+        <!--        <module>seckill</module>-->
+        <!--        <module>zuul</module>-->
         <!--        <module>user-center</module>-->
     </modules>
 
@@ -44,22 +44,8 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
             <version>${spring-cloud-start.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <version>${spring-boot-start.version}</version>
-            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -68,23 +54,11 @@
             <version>${swagger2.version}</version>
         </dependency>
 
-        <!--            mybatis-plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-            <version>${mybatis-plus-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>${freemarker.version}</version>
-        </dependency>
-        <!--            end-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -105,18 +79,32 @@
             <version>${mysql-connector-java.version}</version>
         </dependency>
 
-        <!--        以下两个依赖是动态刷新需要-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>${spring-boot-start.version}</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-            <version>${spring-cloud-start.version}</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-config</artifactId>-->
+        <!--            <version>${spring-cloud-start.version}</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-devtools</artifactId>-->
+        <!--            <version>${spring-boot-start.version}</version>-->
+        <!--            <optional>true</optional>-->
+        <!--        </dependency>-->
+
+        <!--        以下两个依赖是动态刷新需要-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
+<!--            <version>${spring-boot-start.version}</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-bus-amqp</artifactId>-->
+<!--            <version>${spring-cloud-start.version}</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 
@@ -125,13 +113,28 @@
     <!--    只声明 子模块不引入-->
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>zcs</groupId>
                 <artifactId>commons</artifactId>
                 <version>${zcs.commons}</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.retry/spring-retry -->
             <dependency>
                 <groupId>org.springframework.retry</groupId>
@@ -168,12 +171,6 @@
 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-config</artifactId>
-                <version>${spring-cloud-start.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-oauth2</artifactId>
                 <version>${spring-cloud-start.version}</version>
             </dependency>
@@ -182,12 +179,6 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>${spring-cloud-start.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
                 <version>${spring-cloud-start.version}</version>
             </dependency>
 
