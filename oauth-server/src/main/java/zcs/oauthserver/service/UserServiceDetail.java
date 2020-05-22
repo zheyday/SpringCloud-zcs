@@ -15,13 +15,13 @@ import zcs.oauthserver.model.User;
 public class UserServiceDetail implements UserDetailsService {
     private final UserMapper userMapper;
     private final RoleMapper roleMapper;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceDetail(UserMapper userMapper, RoleMapper roleMapper, PasswordEncoder passwordEncoder) {
+    public UserServiceDetail(UserMapper userMapper, RoleMapper roleMapper) {
         this.userMapper = userMapper;
         this.roleMapper = roleMapper;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override

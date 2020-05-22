@@ -2,8 +2,7 @@ server:
   port: 9120
 #  servlet:
 #    context-path: /oauth-server
-master-ip: 172.17.0.1
-oauth-server: http://${master-ip}:9120
+master-ip: 106.14.45.78
 spring:
   main:
     #    允许自己的实例覆盖系统默认的实例
@@ -12,7 +11,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${master-ip}:3306/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
     username: root
-    data-password: 123456
+    password: 123456
   redis:
     host: ${master-ip}
     port: 6379

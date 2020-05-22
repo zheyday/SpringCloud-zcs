@@ -17,12 +17,12 @@
 
     <modules>
         <module>commons</module>
-        <module>oauth-server</module>
+        <!--        <module>oauth-server</module>-->
         <!--        <module>config-client-template</module>-->
         <!--        <module>eureka-client</module>-->
         <!--        <module>eureka-client1</module>-->
         <!--        <module>seckill</module>-->
-        <!--        <module>zuul</module>-->
+        <module>zuul</module>
         <!--        <module>user-center</module>-->
     </modules>
 
@@ -94,17 +94,17 @@
         <!--        </dependency>-->
 
         <!--        以下两个依赖是动态刷新需要-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
-<!--            <version>${spring-boot-start.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
+        <!--            <version>${spring-boot-start.version}</version>-->
+        <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-bus-amqp</artifactId>-->
-<!--            <version>${spring-cloud-start.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-bus-amqp</artifactId>-->
+        <!--            <version>${spring-cloud-start.version}</version>-->
+        <!--        </dependency>-->
 
     </dependencies>
 

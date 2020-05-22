@@ -1,14 +1,14 @@
 server:
   port: 9110
 
-master-ip: 172.17.0.1
+master-ip: 106.14.45.78
 oauth-server: http://${master-ip}:9120
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${master-ip}:3306/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
     username: root
-    data-password: 123456
+    password: 123456
   redis:
     host: ${master-ip}
     port: 6379
@@ -43,7 +43,7 @@ security:
       #      资源服务器三种验证令牌方法
       #       一、在ResourceServerConfig中本地配置
       #      二、从认证服务器获取用户信息 解析出token
-      user-info-uri: ${oauth-server}/current
+#      user-info-uri: ${oauth-server}/current
       prefer-token-info: false
       #       三、远程获取公钥 解析token
       jwt:
