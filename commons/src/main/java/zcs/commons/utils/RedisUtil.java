@@ -2,16 +2,18 @@ package zcs.commons.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.scripting.support.ResourceScriptSource;
 import org.springframework.stereotype.Component;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisCluster;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -22,25 +24,32 @@ public class RedisUtil {
     private DefaultRedisScript<Long> redisScript;
     private ValueOperations<String, Object> valueOperations;
     private HashOperations<String, Object, Object> hashOperations;
+    private ListOperations<String, Object> listOperations;
 
     @Autowired
     public RedisUtil(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
         valueOperations = redisTemplate.opsForValue();
         hashOperations = redisTemplate.opsForHash();
+        listOperations = redisTemplate.opsForList();
     }
 
     @PostConstruct
     public void init() {
         redisScript = new DefaultRedisScript<>();
         redisScript.setResultType(Long.class);
-//        redisScript.setScriptText("local number = tonumber(redis.call('get',KEYS[1]))\n" +
-//                "if number <= 0 then\n" +
-//                "    return -1;\n" +
-//                "end\n" +
-//                "return redis.call('DECRBY',KEYS[1],1);");
-        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("seckill.lua")));
-//        redisScript.setLocation(new ClassPathResource("seckill.lua"));
+        redisScript.setScriptText(
+                "if redis.call('hexists', KEYS[2], KEYS[3]) == 1 then\n" +
+                        "    --    用户已存在\n" +
+                        "    return -2;\n" +
+                        "end\n" +
+                        "local number = tonumber(redis.call('get', KEYS[1]))\n" +
+                        "if number <= 0 then\n" +
+                        "    --    数量不足\n" +
+                        "    return -1;\n" +
+                        "end\n" +
+                        "return redis.call('DECRBY', KEYS[1], 1)");
+//        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("seckill.lua")));
     }
 
     /**
@@ -100,7 +109,7 @@ public class RedisUtil {
      * @return
      */
     public Boolean setnx(String key, Object value, long time) {
-        return valueOperations.setIfAbsent(key, value, time, TimeUnit.SECONDS);
+        return valueOperations.setIfAbsent(key, value, time, TimeUnit.MILLISECONDS);
     }
 
     /**
@@ -134,15 +143,34 @@ public class RedisUtil {
     /**
      * 结合lua脚本实现
      *
-     * @param key
+     * @param key0
      * @return
      */
-    public Long lua(String key,String hKey,String userId) {
+    public Long lua(String key0, String key1, String key2) {
         List<String> keyList = new ArrayList<>();
-        keyList.add(key);
-        keyList.add(hKey);
-        keyList.add(userId);
+        keyList.add(key0);
+        keyList.add(key1);
+        keyList.add(key2);
+        List<String> valueList = new ArrayList<>();
         return redisTemplate.execute(redisScript, keyList);
+//        return redisTemplate.execute((RedisCallback<Long>) connection -> {
+//            Object nativeConnection = connection.getNativeConnection();
+////            集群
+//            if (nativeConnection instanceof JedisCluster)
+//                return (Long) ((JedisCluster) nativeConnection).eval(redisScript.getScriptAsString(), keyList, valueList);
+////            单点
+//            else if (nativeConnection instanceof Jedis)
+//                return (Long) ((Jedis) nativeConnection).eval(redisScript.getScriptAsString(), keyList, valueList);
+//            else
+//                return redisTemplate.execute(redisScript, keyList);
+//        });
+    }
+
+    public Long handleStock(String goodId, String success, String componentKey) {
+        Integer number = (Integer) valueOperations.get(goodId);
+        if (number <= 0)
+            return -1L;
+        return decrBy(goodId, 1);
     }
 
     /**
@@ -162,8 +190,8 @@ public class RedisUtil {
      * @param value
      * @return
      */
-    public Integer decrBy(String key, Integer value) {
-        return Math.toIntExact(valueOperations.decrement(key, value));
+    public Long decrBy(String key, Integer value) {
+        return valueOperations.decrement(key, value);
     }
 
     /**
@@ -207,8 +235,13 @@ public class RedisUtil {
         }
     }
 
+    //----------------------------   List操作 -------------------------------------
+    public void lSet(String key, String value) {
+        listOperations.rightPush(key, value);
+    }
+
     //----------------------------   Hash操作 -------------------------------------
-    public BoundHashOperations<String, Object, Object> boundHashOps(String key){
+    public BoundHashOperations<String, Object, Object> boundHashOps(String key) {
         return redisTemplate.boundHashOps(key);
     }
 
@@ -225,6 +258,7 @@ public class RedisUtil {
 
     /**
      * 将hash表key中的field的值设为value
+     *
      * @param key
      * @param field
      * @param value
@@ -235,16 +269,18 @@ public class RedisUtil {
 
     /**
      * 删除一个或多个字段
+     *
      * @param key
      * @param fields
      * @return
      */
     public Long hDelete(String key, Object... fields) {
-        return hashOperations.delete(key,fields);
+        return hashOperations.delete(key, fields);
     }
 
     /**
      * 是否存在field
+     *
      * @param key
      * @param field
      * @return

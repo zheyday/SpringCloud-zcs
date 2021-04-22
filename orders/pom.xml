@@ -6,6 +6,7 @@
         <groupId>zcs</groupId>
         <artifactId>cloudOne</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <!--        <relativePath>../pom.xml</relativePath> -->
     </parent>
 
     <artifactId>orders</artifactId>
@@ -16,17 +17,11 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
-        <docker.registry>registry.cn-hangzhou.aliyuncs.com/zcs</docker.registry>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+
     </dependencies>
-
-
 
     <build>
         <resources>
@@ -43,41 +38,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.13</version>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <goals>
-                            <goal>build</goal>
-                            <goal>push</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!--                    <repository>${project.artifactId}</repository>-->
-                    <repository>${docker.registry}/${project.artifactId}</repository>
-                    <!--                    镜像的tag-->
-                    <tag>latest</tag>
-                    <dockerfile>Dockerfile</dockerfile>
-                    <contextDirectory>${project.basedir}</contextDirectory>
-                    <buildArgs>
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                    </buildArgs>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-    </repositories>
 
 </project>

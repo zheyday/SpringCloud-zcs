@@ -2,26 +2,28 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="oauth-server" />
-        <module name="config-client" />
-        <module name="eureka-client1" />
-        <module name="consumer_feign" />
         <module name="oauth-test" />
-        <module name="websocket" />
-        <module name="eureka-client" />
-        <module name="seckill" />
-        <module name="orders" />
-        <module name="zuul" />
-        <module name="demo1" />
         <module name="user-center" />
-        <module name="eureka-server-single" />
+        <module name="seckill" />
+        <module name="config-client" />
+        <module name="consumer_feign" />
+        <module name="eureka-client1" />
+        <module name="zuul" />
+        <module name="goshop" />
         <module name="commons" />
+        <module name="oauth-server" />
         <module name="rabbitmq-hello" />
         <module name="config-server" />
+        <module name="eureka-client" />
+        <module name="websocket" />
+        <module name="orders" />
+        <module name="eureka-server-single" />
+        <module name="demo1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -35,6 +37,7 @@
       <module name="eureka-client" target="1.8" />
       <module name="eureka-client1" target="1.8" />
       <module name="eureka-server-single" target="1.8" />
+      <module name="goshop" target="1.8" />
       <module name="oauth-client1" target="1.8" />
       <module name="oauth-server" target="1.8" />
       <module name="oauth-test" target="1.8" />
@@ -61,6 +64,7 @@
       <module name="eureka-client" options="-parameters" />
       <module name="eureka-client1" options="-parameters" />
       <module name="eureka-server-single" options="-parameters" />
+      <module name="goshop" options="-parameters" />
       <module name="oauth-client1" options="-parameters" />
       <module name="oauth-server" options="-parameters" />
       <module name="oauth2" options="-parameters" />

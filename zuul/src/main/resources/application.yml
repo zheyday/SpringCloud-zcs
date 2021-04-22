@@ -1,22 +1,22 @@
 server:
   port: 9110
 
-master-ip: 106.14.45.78
-oauth-server: http://${master-ip}:9120
+remoter-ip: 106.14.45.78
+oauth-server: http://${remoter-ip}:9120
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${master-ip}:3306/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://${remoter-ip}:3306/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
     username: root
     password: 123456
   redis:
-    host: ${master-ip}
+    host: ${remoter-ip}
     port: 6379
     password: 123456
     timeout: 20000
     database: 0
 #  rabbitmq:
-#    host: ${master-ip}
+#    host: ${remoter-ip}
 #    port: 5672
 #    username: guest
 #    password: guest

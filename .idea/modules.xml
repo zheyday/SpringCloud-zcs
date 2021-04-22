@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/eureka-client/eureka-client.iml" filepath="$PROJECT_DIR$/eureka-client/eureka-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-client1/eureka-client1.iml" filepath="$PROJECT_DIR$/eureka-client1/eureka-client1.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-server-single/eureka-server-single.iml" filepath="$PROJECT_DIR$/eureka-server-single/eureka-server-single.iml" />
+      <module fileurl="file://$PROJECT_DIR$/goshop/goshop.iml" filepath="$PROJECT_DIR$/goshop/goshop.iml" />
       <module fileurl="file://$PROJECT_DIR$/oauth-server/oauth-server.iml" filepath="$PROJECT_DIR$/oauth-server/oauth-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/orders/orders.iml" filepath="$PROJECT_DIR$/orders/orders.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitmq-hello/rabbitmq-hello.iml" filepath="$PROJECT_DIR$/rabbitmq-hello/rabbitmq-hello.iml" />

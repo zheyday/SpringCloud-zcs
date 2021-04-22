@@ -32,4 +32,9 @@ public class RabbitmqHelloApplicationTests {
     public void send3() throws Exception {
         sender.send3();
     }
+
+    @Test
+    public void sendTTL() throws Exception {
+        sender.sendTTL();
+    }
 }

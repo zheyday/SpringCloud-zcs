@@ -1,0 +1,20 @@
+{
+  "properties": [
+    {
+      "name": "remoter-ip",
+      "type": "java.lang.String",
+      "defaultValue": "106.14.45.78",
+      "description": "Description for remoter-ip."
+    },
+    {
+      "name": "local-ip",
+      "type": "java.lang.String",
+      "defaultValue": "localhost",
+      "description": "Description for local-ip."
+    },
+    {
+      "name": "oauth-server",
+      "type": "java.lang.String",
+      "description": "Description for oauth-server."
+    }
+  ] }

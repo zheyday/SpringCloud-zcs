@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web){
-        web.ignoring().antMatchers("/loginp","/register","/token","/bootstrap/**","/login.html");
+        web.ignoring().antMatchers("/*.ico","/loginp","/register","/token","/bootstrap/**","/login.html");
     }
 
     /**

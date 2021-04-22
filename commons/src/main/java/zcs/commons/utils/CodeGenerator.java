@@ -17,9 +17,9 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         //    模块名称
-        String[] modules = {"seckill"};
+        String[] modules = {"goshop"};
         //    要生成的表名
-        String[] includeTable = {"success_killed"};
+        String[] includeTable = {"index_category"};
 
         for (String module : modules)
             generator(module,false, includeTable);
@@ -27,7 +27,7 @@ public class CodeGenerator {
 
     public static void generator(String moduleName,boolean fileOverride, String... includeTable) {
 //        src/main/java下的包名
-        String parent = "zcs." + moduleName;
+        String parent = "mmm." + moduleName;
 
         //        获取用户当前工作目录
         String projectPath = System.getProperty("user.dir") + "/" + moduleName;
@@ -36,7 +36,7 @@ public class CodeGenerator {
 
         // 数据库表配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setNaming(NamingStrategy.underline_to_camel);
+        strategy.setNaming(NamingStrategy.no_change);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setInclude(includeTable);
 //        strategy.setSuperEntityClass("zcs.seckill.common.BaseEntity");

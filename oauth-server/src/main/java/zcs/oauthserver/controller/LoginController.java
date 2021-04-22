@@ -2,6 +2,7 @@ package zcs.oauthserver.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DuplicateKeyException;
@@ -27,6 +28,12 @@ public class LoginController {
     private final IUserService userService;
     private final CommonUtil commonUtil;
 
+    @Value("${local-ip}")
+    private String ip;
+    @Value("${server.port}")
+    private String port;
+    private String host;
+
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         // Do any additional configuration here
@@ -40,8 +47,10 @@ public class LoginController {
 
     @GetMapping("/loginp")
     public void hello(HttpServletResponse response) throws Exception {
-        String redirectUrl = "http://106.14.45.78:9120/token";
-        String url = "http://106.14.45.78:9120/oauth/authorize?client_id=zuul&response_type=code&redirect_uri=" + redirectUrl;
+        host = "http://106.14.45.78" + ":" + port;
+        System.out.println(host);
+        String redirectUrl = host + "/token";
+        String url = host + "/oauth/authorize?client_id=zuul&response_type=code&redirect_uri=" + redirectUrl;
         response.sendRedirect(url);
     }
 
@@ -52,11 +61,11 @@ public class LoginController {
             map.add("code", code);
             map.add("client_id", "zuul");
             map.add("client_secret", "zuul");
-            map.add("redirect_uri", "http://106.14.45.78:9120/token");
+            map.add("redirect_uri", host + "/token");
             map.add("grant_type", "authorization_code");
-            Map<String, String> resp = restTemplate.postForObject("http://106.14.45.78:9120/oauth/token", map, Map.class);
+            Map<String, String> resp = restTemplate.postForObject(host + "/oauth/token", map, Map.class);
             String access_token = resp.get("access_token");
-            response.sendRedirect("http://106.14.45.78?access_token=" + access_token);
+            response.sendRedirect("http://" + ip + "?access_token=" + access_token);
         }
     }
 

@@ -1,0 +1,11 @@
+server:
+  port: 9120
+#  servlet:
+#    context-path: /oauth-server
+spring:
+  main:
+    #    允许自己的实例覆盖系统默认的实例
+    allow-bean-definition-overriding: true
+#  profiles:
+#    active: commons
+

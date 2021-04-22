@@ -1,6 +1,41 @@
+remoter-ip: localhost
+local-ip: 127.0.0.1
+oauth-server: http://${local-ip}:9120
+
 spring:
   datasource:
-    url: jdbc:mysql://localhost/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://127.0.0.1:3306/seckill?serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
+  redis:
+    host: ${remoter-ip}
+    port: 6379
+    password: 123456
+    timeout: 20000
+    database: 0
+#    cluster:
+#      nodes:
+#        - ${remoter-ip}:6380
+#        - ${remoter-ip}:6381
+#        - ${remoter-ip}:6382
+#        #      password: 123456
+#      soTimeout: 6000
+#      connectionTimeout: 5000
+#      max-redirects: 5
+#  rabbitmq:
+#    host: ${local-ip}
+#    port: 5672
+#    username: guest
+#    password: guest
+eureka:
+  instance:
+    #    发送心跳时间间隔 默认30
+    lease-renewal-interval-in-seconds: 10
+    #    服务端收到最后一次心跳之后等待的时间上限 超过则剔除（客户端告诉服务端按照此规则）
+    lease-expiration-duration-in-seconds: 22
+    prefer-ip-address: true
+  client:
+    service-url:
+      #服务注册中心
+      defaultZone: http://106.14.45.78:8761/eureka/
