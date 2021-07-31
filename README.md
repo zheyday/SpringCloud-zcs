@@ -94,7 +94,7 @@ WebSocket
 
 |——seckill				    --秒杀系统
 
-|——user-center		    --用户中心
+|——user-center		    --用户中心（没用）
 
 |——sys-admin			  --系统管理
 
