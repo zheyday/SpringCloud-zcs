@@ -94,10 +94,6 @@ WebSocket
 
 |——seckill				    --秒杀系统
 
-|——user-center		    --用户中心（没用）
-
-|——sys-admin			  --系统管理
-
 |——zuul					    --网关
 
 ## 基础服务
@@ -132,13 +128,6 @@ WebSocket
 
 使用mysql、redis+lua、rabbitmq逐步实现高并发秒杀
 
-
-
-### 用户中心 - user-center
-
-
-
-### 系统管理 - sys-admin
 
 
 
